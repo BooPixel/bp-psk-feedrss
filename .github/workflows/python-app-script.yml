@@ -39,5 +39,5 @@ jobs:
       run: |
         git add src/assets/rss-sema-rs.xml
         git commit -a -m "⚙️ FEATURE - Update XML"
-        git push
+        git push origin develop
       # continue-on-error: true
