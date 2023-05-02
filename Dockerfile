@@ -18,11 +18,12 @@ RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/10
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # ===== Chrome stuff =====
 
-COPY rss.xml $APP_PATH/rss.xml
-COPY script.py $APP_PATH/script.py
+RUN apt-get install -y vim nano
+
+COPY src $APP_PATH/src
 COPY requirements.txt $APP_PATH/requirements.txt
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt --no-cache-dir
 
-CMD ["python", "script.py"]
+# CMD ["python", "src/script.py"]
