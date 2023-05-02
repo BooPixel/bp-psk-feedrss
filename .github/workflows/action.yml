@@ -1,0 +1,6 @@
+# action.yml
+name: 'RSS'
+description: 'Sema RS Notícias'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
