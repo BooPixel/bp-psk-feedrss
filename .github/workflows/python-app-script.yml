@@ -2,7 +2,7 @@ name: 📦 Script Feed-RSS
 
 on:
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "master" ]
 
 permissions:
   contents: write
@@ -10,7 +10,6 @@ permissions:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: develop
 
     steps:
     - uses: actions/checkout@v3
@@ -35,5 +34,5 @@ jobs:
       run: |
         git add src/assets/rss-sema-rs.xml
         git commit -m "⚙️ FEATURE - Update XML"
-        git push
+        git push origin master
       continue-on-error: true
