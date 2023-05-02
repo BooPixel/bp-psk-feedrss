@@ -5,13 +5,15 @@
 - CE - [rss-sema-ce.xml](https://boopixel.github.io/boopixel-feed-rss/src/feed/rss-sema-ce.xml)
 - RS - [rss-sema-rs.xml](https://boopixel.github.io/boopixel-feed-rss/src/feed/rss-sema-rs.xml)
 
-## Docker Build
+## Test
+
+### Docker Build
 
 ```shell
 docker build --tag feed-rss/dev --file Dockerfile .
 ```
 
-## Docker Run
+### Docker Run
 
 ```shell
 docker run -d -t feed-rss/dev
