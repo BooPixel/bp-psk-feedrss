@@ -16,7 +16,10 @@ RUN apt-get install -y google-chrome-stable
 RUN apt-get install -y vim nano
 
 COPY script.py $APP_PATH/script.py
-RUN pip install selenium webdriver-manager
+COPY requirements.txt $APP_PATH/requirements.txt
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt --no-cache-dir
 
 RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_linux64.zip
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
