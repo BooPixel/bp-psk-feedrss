@@ -39,5 +39,8 @@ jobs:
       run: |
         git add src/assets/rss-sema-rs.xml
         git commit -a -m "⚙️ FEATURE - Update XML"
-        git push origin develop
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # continue-on-error: true
