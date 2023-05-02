@@ -33,7 +33,8 @@ jobs:
         git config --global user.name "FernandoCelmer"
     - name: 📝 Git Process 
       run: |
+        git pull
         git add src/assets/rss-sema-rs.xml
         git commit -m "⚙️ FEATURE - Update XML"
-        git push origin HEAD master
+        git push
       continue-on-error: true
