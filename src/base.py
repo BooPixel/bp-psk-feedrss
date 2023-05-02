@@ -1,7 +1,6 @@
 import xml.etree.ElementTree as ET
 
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -10,14 +9,14 @@ class Build:
 
     def __init__(
             self,
-            path_input: str = "src/assets/rss-simple.xml",
-            path_output: str = "src/assets/rss-sema-rs.xml"):
+            path_input: str = "src/assets/rss.xml",
+            path_output: str = "src/feed/rss.xml"):
         self.tree = ET.ElementTree()
         self.tree.parse(path_input)
-        self.channel = self.tree.find("channel")
         self.path_output = path_output
 
     def setup(self, data: dict):
+        self.channel = self.tree.find("channel")
         for item in data:
             element = self.new_element(
                 title=item.get("title"),
@@ -44,41 +43,37 @@ class Build:
 
 class Driver:
 
-    @staticmethod
-    def chrome_browser(headless: bool = False) -> webdriver.ChromeOptions:
+    def __init__(self, headless: bool = True) -> None:
+        self.headless = headless
+        self.chrome = Chrome
+
+    def get_chrome(self):
+        chrome = Chrome(self.headless)
+        return chrome.browser()
+
+
+class Chrome:
+
+    def __init__(self, headless: bool) -> None:
+        self.headless = headless
+
+    def options(self) -> webdriver.ChromeOptions:
+        """Chrome Options
+        """
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
-        if headless:
+        if self.headless:
             chrome_options.add_argument("--headless")
+        return chrome_options
 
-        return webdriver.Chrome(
+    def browser(self) -> webdriver.Chrome:
+        """Chrome Browser
+        """
+        driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()),
-            options=chrome_options
+            options=self.options()
         )
-
-
-if __name__ == "__main__":
-    driver = Driver().chrome_browser(headless=True)
-    driver.implicitly_wait(10)
-    driver.get("https://www.sema.rs.gov.br/noticias")
-
-    content = driver.find_element(By.CLASS_NAME, "conteudo-lista__body")
-    posts = content.find_elements(By.TAG_NAME, "article")
-
-    data = []
-    for post in posts:
-        try:
-            data.append(
-                dict(
-                    title=str(post.find_element(By.TAG_NAME, "h2").text),
-                    link=str(post.find_element(By.TAG_NAME, "a").get_attribute('href')),
-                    description=str(post.find_element(By.TAG_NAME, "p").text)
-                )
-            )
-        except Exception as error:
-            print(error)
-
-    if data:
-        Build().setup(data=data)
+        driver.implicitly_wait(10)
+        return driver
