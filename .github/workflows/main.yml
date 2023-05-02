@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "null" ]
 
 jobs:
   hello_world_job:
