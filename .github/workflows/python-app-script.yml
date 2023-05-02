@@ -35,5 +35,5 @@ jobs:
       run: |
         git add src/assets/rss-sema-rs.xml
         git commit -m "⚙️ FEATURE - Update XML"
-        git push https://github.com/BooPixel/bp-psk-feedrss origin/develop
+        git push https://github.com/BooPixel/bp-psk-feedrss origin/master
       continue-on-error: true
