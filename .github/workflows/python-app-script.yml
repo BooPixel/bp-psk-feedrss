@@ -2,7 +2,7 @@ name: 📦 Script Feed-RSS
 
 on:
   schedule:
-    - cron:  '0 12 * * *'
+    - cron:  '*/5 * * * *'
 
 permissions:
   contents: write
@@ -32,14 +32,12 @@ jobs:
 
     - name: ⚙️ Git Config
       run: |
-        git config --global user.email "github@fernandocelmer.com"
-        git config --global user.name "Auto Commit"
+        git config --global user.email ${{secrets.EMAIL}}
+        git config --global user.name ${{secrets.USERNAME}}
 
     - name: 📝 Git Process 
       run: |
         git add src/assets/rss-sema-rs.xml
         git commit -a -m "⚙️ FEATURE - Update XML"
         git push origin HEAD:develop --force
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       continue-on-error: true
