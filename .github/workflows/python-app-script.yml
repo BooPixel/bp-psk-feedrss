@@ -1,10 +1,11 @@
 name: Script
 
 on:
-  push:
+  pull_request:
     branches: [ "master" ]
 
-permissions: read-all
+permissions:
+  contents: write
 
 jobs:
   deployment:
@@ -23,7 +24,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt --no-cache-dir
-
-    - name: Run Script
+    - name: ✅ Run Script
       run: |
-        python ./script.py
+        python ./src/script.py
+    - name: ⚙️ Git Config
+      run: |
+        git config --global user.email "email@fernandocelmer.com"
+        git config --global user.name "FernandoCelmer"
+    - name: 📝 Git Process 
+      run: |
+        git add src/assets/rss-sema-rs.xml
+        git commit -m "⚙️ FEATURE - Update XML"
+        git push
+      continue-on-error: true

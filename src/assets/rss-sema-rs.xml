@@ -1,0 +1,14 @@
+<rss version="2.0">
+
+  <channel>
+    <title>RSS</title>
+    <link>https://www.sema.rs.gov.br/noticias</link>
+    <description>Feed RSS</description>
+    <item>
+      <title>ok</title>
+      <link>True</link>
+      <description>description</description>
+    </item>
+  </channel>
+
+</rss>
