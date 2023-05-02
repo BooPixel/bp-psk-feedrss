@@ -1,3 +1,7 @@
+"""
+Module Base
+"""
+
 import xml.etree.ElementTree as ET
 
 from selenium import webdriver
