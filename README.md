@@ -1,5 +1,10 @@
 # boopixel-feed-rss
 
+## Feed RSS
+
+- CE - [rss-sema-ce.xml](https://boopixel.github.io/boopixel-feed-rss/src/feed/rss-sema-ce.xml)
+- RS - [rss-sema-rs.xml](https://boopixel.github.io/boopixel-feed-rss/src/feed/rss-sema-rs.xml)
+
 ## Docker Build
 
 ```shell
