@@ -1,4 +1,4 @@
-# bp-psk-feedrss
+# boopixel-feed-rss
 
 ## Docker Build
 
