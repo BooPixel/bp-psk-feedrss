@@ -2,7 +2,7 @@ name: 📦 Script Feed-RSS
 
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: [ "develop" ]
 
 permissions:
   contents: write
@@ -35,5 +35,5 @@ jobs:
       run: |
         git add src/assets/rss-sema-rs.xml
         git commit -m "⚙️ FEATURE - Update XML"
-        git push https://github.com/BooPixel/bp-psk-feedrss HEAD origin/master
+        git push
       continue-on-error: true
