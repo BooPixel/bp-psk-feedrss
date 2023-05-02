@@ -13,16 +13,16 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 
 RUN apt-get -y update
 RUN apt-get install -y google-chrome-stable
-RUN apt-get install -y vim nano
 
+RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+# ===== Chrome stuff =====
+
+COPY rss.xml $APP_PATH/rss.xml
 COPY script.py $APP_PATH/script.py
 COPY requirements.txt $APP_PATH/requirements.txt
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt --no-cache-dir
 
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_linux64.zip
-RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
-
 CMD ["python", "script.py"]
-# ===== Chrome stuff =====
