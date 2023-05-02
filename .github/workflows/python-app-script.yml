@@ -35,5 +35,5 @@ jobs:
       run: |
         git add src/assets/rss-sema-rs.xml
         git commit -m "⚙️ FEATURE - Update XML"
-        git push
+        git push origin HEAD master
       continue-on-error: true
