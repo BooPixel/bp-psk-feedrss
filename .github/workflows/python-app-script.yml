@@ -42,4 +42,4 @@ jobs:
         git push origin HEAD:develop --force
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # continue-on-error: true
+      continue-on-error: true
