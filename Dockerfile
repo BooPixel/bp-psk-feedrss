@@ -26,4 +26,4 @@ COPY requirements.txt $APP_PATH/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt --no-cache-dir
 
-# CMD ["python", "src/script.py"]
+CMD ["python", "src/main.py"]
