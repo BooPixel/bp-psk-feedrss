@@ -22,7 +22,6 @@ def rss_sema_rs():
         except Exception as error:
             print(error)
 
-    print(data)
     if data:
         Build(path_output="src/feed/rss-sema-rs.xml").setup(data=data)
 
