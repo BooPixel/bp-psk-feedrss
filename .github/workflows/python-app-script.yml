@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: ⚙️ Set up Python 3.10
       uses: actions/setup-python@v3
@@ -23,13 +25,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt --no-cache-dir
+
     - name: ✅ Run Script
       run: |
         python ./src/script.py
+
     - name: ⚙️ Git Config
       run: |
         git config --global user.email "github@fernandocelmer.com"
         git config --global user.name "Auto Commit"
+
     - name: 📝 Git Process 
       run: |
         git add src/assets/rss-sema-rs.xml
