@@ -28,7 +28,7 @@ jobs:
 
     - name: ✅ Run Script
       run: |
-        python ./src/script.py
+        python ./src/main.py
 
     - name: ⚙️ Git Config
       run: |
@@ -37,7 +37,7 @@ jobs:
 
     - name: 📝 Git Process 
       run: |
-        git add src/assets/rss-sema-rs.xml
+        git add src/feed/rss-sema-rs.xml
         git commit -a -m "⚙️ FEATURE - Update XML"
         git push origin HEAD:develop --force
       continue-on-error: true
