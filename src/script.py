@@ -55,7 +55,7 @@ class Driver:
         executable_path = ChromeDriverManager().install()
         return webdriver.Chrome(
             executable_path=executable_path,
-            chrome_options=chrome_options
+            options=chrome_options
         )
 
 
