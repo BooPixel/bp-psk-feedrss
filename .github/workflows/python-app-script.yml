@@ -2,7 +2,7 @@ name: 📦 Script Feed-RSS
 
 on:
   schedule:
-    - cron:  '0 */6 * * *'
+    - cron:  '*/2 * * * *'
 
 permissions:
   contents: write
@@ -35,10 +35,9 @@ jobs:
         git config --global user.email ${{secrets.EMAIL}}
         git config --global user.name ${{secrets.USERNAME}}
 
-    - name: 📝 Git Add rss-sema-rs.xml
+    - name: 📝 Git Process
       run: |
-        git add src/feed/rss-sema-rs.xml
-        git add src/feed/rss-sema-ce.xml
+        git add .
         git commit -a -m "⚙️ FEATURE - Update XML"
         git push origin HEAD:master --force
       continue-on-error: true
