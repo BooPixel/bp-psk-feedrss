@@ -1,8 +1,8 @@
 name: 📦 Script Feed-RSS
 
 on:
-  pull_request:
-    branches: [ "master" ]
+  schedule:
+    - cron:  '0-0 0-0 12 ? * * *'
 
 permissions:
   contents: write
