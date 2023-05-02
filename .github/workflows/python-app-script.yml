@@ -1,4 +1,4 @@
-name: Script
+name: 📦 Script Feed-RSS
 
 on:
   pull_request:
