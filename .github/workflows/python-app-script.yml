@@ -28,11 +28,11 @@ jobs:
         python ./src/script.py
     - name: ⚙️ Git Config
       run: |
-        git config --global user.email "email@fernandocelmer.com"
-        git config --global user.name "FernandoCelmer"
+        git config --global user.email "github@fernandocelmer.com"
+        git config --global user.name "Auto Commit"
     - name: 📝 Git Process 
       run: |
         git add src/assets/rss-sema-rs.xml
-        git commit -m "⚙️ FEATURE - Update XML"
-        git push -u origin master --force
-      continue-on-error: true
+        git commit -a -m "⚙️ FEATURE - Update XML"
+        git push
+      # continue-on-error: true
