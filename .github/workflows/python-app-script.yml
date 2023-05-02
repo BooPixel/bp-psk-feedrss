@@ -33,7 +33,6 @@ jobs:
         git config --global user.name "FernandoCelmer"
     - name: 📝 Git Process 
       run: |
-        git pull https://github.com/BooPixel/bp-psk-feedrss origin/develop --rebase
         git add src/assets/rss-sema-rs.xml
         git commit -m "⚙️ FEATURE - Update XML"
         git push https://github.com/BooPixel/bp-psk-feedrss origin/develop
