@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -52,9 +53,8 @@ class Driver:
         if headless:
             chrome_options.add_argument("--headless")
 
-        executable_path = ChromeDriverManager().install()
         return webdriver.Chrome(
-            executable_path=executable_path,
+            service=Service(ChromeDriverManager().install()),
             options=chrome_options
         )
 
@@ -79,9 +79,6 @@ if __name__ == "__main__":
             )
         except Exception as error:
             print(error)
-
-
-    from pdb import set_trace; set_trace()
 
     if data:
         Build().setup(data=data)
