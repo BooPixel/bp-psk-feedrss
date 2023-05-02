@@ -37,7 +37,6 @@ jobs:
 
     - name: 📝 Git Process 
       run: |
-        git checkout develop
         git add src/assets/rss-sema-rs.xml
         git commit -a -m "⚙️ FEATURE - Update XML"
         git push
