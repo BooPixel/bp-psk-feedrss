@@ -14,13 +14,26 @@ class Build:
     def __init__(
             self,
             path_input: str = "src/assets/rss.xml",
-            path_output: str = "src/feed/rss.xml"):
-        self.tree = ET.ElementTree()
-        self.tree.parse(path_input)
+            path_output: str = "src/feed/rss.xml",
+            description: str = "Feed RSS",
+            title: str = "RSS",
+            link: str = "#"):
+        self.path_input = path_input
         self.path_output = path_output
+        self.description = description
+        self.title = title
+        self.link = link
+
+        self.tree = ET.ElementTree()
+        self.tree.parse(self.path_input)
 
     def setup(self, data: dict):
         self.channel = self.tree.find("channel")
+
+        self.channel.find("description").text = self.description
+        self.channel.find("title").text = self.title
+        self.channel.find("link").text = self.link
+
         for item in data:
             element = self.new_element(
                 title=item.get("title"),

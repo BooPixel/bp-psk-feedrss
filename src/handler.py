@@ -15,31 +15,27 @@ class SemaRS:
     def __init__(self) -> None:
         self.driver = Driver().get_chrome()
         self.driver.get(self.URL)
-
-        try:
-            self.run()
-        except Exception as error:
-            logging.error(error)
-
+        self.run()
+  
     def run(self):
         content = self.driver.find_element(By.CLASS_NAME, "conteudo-lista__body")
         posts = content.find_elements(By.TAG_NAME, "article")
 
         data = []
         for post in posts:
-            try:
-                data.append(
-                    dict(
-                        title=str(post.find_element(By.TAG_NAME, "h2").text),
-                        link=str(post.find_element(By.TAG_NAME, "a").get_attribute('href')),
-                        description=str(post.find_element(By.TAG_NAME, "p").text)
-                    )
+            data.append(
+                dict(
+                    title=str(post.find_element(By.TAG_NAME, "h2").text),
+                    link=str(post.find_element(By.TAG_NAME, "a").get_attribute('href')),
+                    description=str(post.find_element(By.TAG_NAME, "p").text)
                 )
-            except Exception as error:
-                print(error)
+            )
 
         if data:
-            Build(path_output=self.FILE).setup(data=data)
+            Build(
+                path_output=self.FILE,
+                link=self.URL
+            ).setup(data=data)
 
 
 class SemaCE:
@@ -75,4 +71,7 @@ class SemaCE:
                 print(error)
 
         if data:
-            Build(path_output=self.FILE).setup(data=data)
+            Build(
+                path_output=self.FILE,
+                link=self.URL
+            ).setup(data=data)
