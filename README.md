@@ -3,13 +3,13 @@
 ## Docker Build
 
 ```shell
-docker build --tag chrome/dev --file Dockerfile .
+docker build --tag feed-rss/dev --file Dockerfile .
 ```
 
 ## Docker Run
 
 ```shell
-docker run -d -t chrome/dev
+docker run -d -t feed-rss/dev
 ```
 
 ## Commit Style
