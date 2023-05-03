@@ -30,14 +30,20 @@ jobs:
       run: |
         python ./src/main.py
 
-    - name: ⚙️ Git Config
+    - name: 📝 Git Config
       run: |
         git config --global user.email ${{secrets.EMAIL}}
         git config --global user.name ${{secrets.USERNAME}}
+      shell: bash
 
     - name: 📝 Git Process
       run: |
-        git add .
-        git commit -a -m "⚙️ FEATURE - Update XML"
-        git push origin HEAD:master --force
+        if [[ `git status --porcelain` ]]; then
+          git add --all
+          git commit -a -m "🤖 BOOT: Update"
+          git push origin HEAD:master --force
+        else
+          echo "WARNING: No changes were detected. git commit push action aborted."
+        fi
+      shell: bash
       continue-on-error: true
