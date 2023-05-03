@@ -2,7 +2,7 @@ name: 📦 Script Feed-RSS
 
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '*/3 * * * *'
 
 permissions:
   contents: write
