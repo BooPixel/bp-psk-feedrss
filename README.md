@@ -10,15 +10,15 @@
 ### Docker Build
 
 ```shell
-docker build --tag rss-sema-arch/dev --file Dockerfile.archlinux .
 docker build --tag rss-sema-ubuntu/dev --file Dockerfile .
+docker build --tag rss-sema-arch/dev --file Dockerfile.archlinux .
 ```
 
 ### Docker Run
 
 ```shell
-docker run -t rss-sema-arch/dev
-docker run -t rss-sema-ubuntu/dev
+docker run -t -v ${PWD}:/opt/ rss-sema-ubuntu/dev
+docker run -t -v ${PWD}:/opt/ rss-sema-arch/dev
 ```
 
 ## Commit Style
