@@ -2,7 +2,7 @@ name: 📦 Script Feed-RSS
 
 on:
   schedule:
-    - cron:  '0 8 * * *'
+    - cron:  '*/5 * * * *'
 
   push:
     branches: [ "develop" ]
