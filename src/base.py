@@ -89,7 +89,7 @@ class Chrome:
         """Chrome Browser
         """
         driver = webdriver.Chrome(
-            executable_path=ChromeDriverManager(version="114.0.5735.16").install(),
+            executable_path=ChromeDriverManager().install(),
             options=self.options()
         )
         driver.implicitly_wait(10)
